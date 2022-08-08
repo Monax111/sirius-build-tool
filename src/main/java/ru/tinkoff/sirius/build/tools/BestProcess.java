@@ -1,13 +1,13 @@
 package ru.tinkoff.sirius.build.tools;
 
-import com.google.gson.Gson;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class BestProcess {
 
     public static void main(String[] args) {
-        Foo foo = new Foo("hi");
-        String json = new Gson().toJson(foo);
-        System.out.println(json);
+        SpringApplication.run(BestProcess.class, args);
     }
 
 }
