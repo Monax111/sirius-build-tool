@@ -9,4 +9,9 @@ public class DemoTest {
     public void demo() {
         Assertions.assertEquals(1 + 1, 2);
     }
+
+    @Test
+    public void contextUp() {
+        BestProcess.main(new String[]{});
+    }
 }
