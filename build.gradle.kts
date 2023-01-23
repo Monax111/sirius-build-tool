@@ -1,4 +1,4 @@
-plugins{
+plugins {
     java
     id("org.springframework.boot") version "2.7.2"
     jacoco
@@ -7,8 +7,8 @@ plugins{
 group = "ru.tinkoff.sirius.build.tools"
 version = "1.0"
 
-java{
-    toolchain{
+java {
+    toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
@@ -31,12 +31,21 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+    }
 
-tasks.jacocoTestReport{
-    reports{
-        html.required.set(true)
+
+    jacocoTestReport {
+        reports {
+            html.required.set(true)
+            xml.required.set(true)
+        }
+        dependsOn(test)
+    }
+
+    check{
+        dependsOn(jacocoTestReport)
     }
 }
